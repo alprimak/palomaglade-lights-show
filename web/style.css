@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --christmas-red: #c41e3a;
+    --christmas-green: #228b22;
+    --christmas-gold: #ffd700;
+    --snow-white: #fffafa;
+    --dark-bg: #1a1a2e;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: var(--snow-white);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+}
+
+h1 {
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 2.5rem;
+    color: var(--christmas-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--snow-white);
+    opacity: 0.9;
+}
+
+main {
+    flex: 1;
+}
+
+.player-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffa500;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.connected {
+    background: var(--christmas-green);
+}
+
+.status-dot.playing {
+    background: var(--christmas-green);
+    animation: pulse-fast 0.5s infinite;
+}
+
+.status-dot.error {
+    background: var(--christmas-red);
+    animation: none;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes pulse-fast {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.status-text {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.audio-visualizer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4px;
+    height: 60px;
+    margin-bottom: 25px;
+}
+
+.bar {
+    width: 8px;
+    background: linear-gradient(to top, var(--christmas-green), var(--christmas-gold));
+    border-radius: 4px;
+    height: 20%;
+    transition: height 0.1s ease;
+}
+
+.visualizer-active .bar {
+    animation: visualize 0.5s ease infinite;
+}
+
+.bar:nth-child(1) { animation-delay: 0s; }
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.3s; }
+.bar:nth-child(5) { animation-delay: 0.4s; }
+.bar:nth-child(6) { animation-delay: 0.3s; }
+.bar:nth-child(7) { animation-delay: 0.2s; }
+.bar:nth-child(8) { animation-delay: 0.1s; }
+.bar:nth-child(9) { animation-delay: 0s; }
+
+@keyframes visualize {
+    0%, 100% { height: 20%; }
+    50% { height: 100%; }
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--christmas-red), #8b0000);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
+}
+
+.play-button:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(196, 30, 58, 0.6);
+}
+
+.play-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.play-button svg {
+    width: 40px;
+    height: 40px;
+}
+
+.play-icon {
+    margin-left: 4px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.volume-control svg {
+    opacity: 0.7;
+}
+
+#volumeSlider {
+    width: 150px;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    outline: none;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--christmas-gold);
+    cursor: pointer;
+}
+
+#volumeSlider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--christmas-gold);
+    cursor: pointer;
+    border: none;
+}
+
+.instructions {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+.info-section, .show-times {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+    font-family: 'Mountains of Christmas', cursive;
+    color: var(--christmas-gold);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.show-times {
+    text-align: center;
+}
+
+.show-times p {
+    margin-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    opacity: 0.7;
+}
+
+.tech-note {
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+/* Snowflakes */
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -20px;
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: fall linear infinite;
+}
+
+.snowflake:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 2s; font-size: 1rem; }
+.snowflake:nth-child(3) { left: 25%; animation-duration: 8s; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 1s; font-size: 0.8rem; }
+.snowflake:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 3s; }
+.snowflake:nth-child(6) { left: 55%; animation-duration: 11s; animation-delay: 5s; font-size: 1.2rem; }
+.snowflake:nth-child(7) { left: 65%; animation-duration: 13s; animation-delay: 0s; }
+.snowflake:nth-child(8) { left: 75%; animation-duration: 10s; animation-delay: 2s; font-size: 0.9rem; }
+.snowflake:nth-child(9) { left: 85%; animation-duration: 8s; animation-delay: 4s; }
+.snowflake:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 1s; font-size: 1.1rem; }
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .player-card {
+        padding: 20px;
+    }
+
+    .play-button {
+        width: 70px;
+        height: 70px;
+    }
+
+    .play-button svg {
+        width: 35px;
+        height: 35px;
+    }
+}
