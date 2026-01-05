@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" crossorigin href="/assets/index-BDBx6C_I.css">
     <style>
         * {
             margin: 0;
@@ -36,6 +35,10 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         header {
@@ -48,96 +51,167 @@
             font-size: 2.2rem;
             color: var(--christmas-gold);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
         .tagline {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--snow-white);
             opacity: 0.9;
         }
 
-        .player-section {
+        .main-card {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 20px;
+            padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
+            text-align: center;
         }
 
-        .player-instructions {
+        .season-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--christmas-red), #a01830);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .countdown-container {
+            margin: 25px 0;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
             background: rgba(255, 215, 0, 0.15);
             border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 12px;
+            padding: 15px 20px;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 2.5rem;
+            color: var(--christmas-gold);
+            line-height: 1;
+        }
+
+        .countdown-unit {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .thank-you {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+
+        .stats-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-section h2 {
+            font-family: 'Mountains of Christmas', cursive;
+            color: var(--christmas-gold);
+            font-size: 1.4rem;
             margin-bottom: 15px;
             text-align: center;
         }
 
-        .player-instructions p {
-            margin: 0;
-            font-size: 0.95rem;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
         }
 
-        /* Snapweb container styling */
-        #root {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
+        .stat-item {
             padding: 10px;
-            min-height: 200px;
         }
 
-        /* Override some Snapweb styles for better integration */
-        #root .MuiPaper-root {
-            background: transparent !important;
-        }
-
-        .info-section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .info-section h2 {
+        .stat-number {
             font-family: 'Mountains of Christmas', cursive;
+            font-size: 2rem;
             color: var(--christmas-gold);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
         }
 
-        .info-section ol {
-            padding-left: 20px;
+        .stat-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .info-section li {
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .show-times {
+        .notify-section {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
         }
 
-        .show-times h2 {
+        .notify-section h2 {
             font-family: 'Mountains of Christmas', cursive;
             color: var(--christmas-gold);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
 
-        .show-times p {
-            margin-bottom: 5px;
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--snow-white);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .github-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         footer {
@@ -147,7 +221,6 @@
             font-size: 0.9rem;
         }
 
-        /* Made in Tampa badge */
         .made-in-tampa {
             display: inline-flex;
             align-items: center;
@@ -195,20 +268,20 @@
             top: -20px;
             color: white;
             font-size: 1.5rem;
-            opacity: 0.7;
+            opacity: 0.4;
             animation: fall linear infinite;
         }
 
-        .snowflake:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
-        .snowflake:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 2s; font-size: 1rem; }
-        .snowflake:nth-child(3) { left: 25%; animation-duration: 8s; animation-delay: 4s; }
-        .snowflake:nth-child(4) { left: 35%; animation-duration: 14s; animation-delay: 1s; font-size: 0.8rem; }
-        .snowflake:nth-child(5) { left: 45%; animation-duration: 9s; animation-delay: 3s; }
-        .snowflake:nth-child(6) { left: 55%; animation-duration: 11s; animation-delay: 5s; font-size: 1.2rem; }
-        .snowflake:nth-child(7) { left: 65%; animation-duration: 13s; animation-delay: 0s; }
-        .snowflake:nth-child(8) { left: 75%; animation-duration: 10s; animation-delay: 2s; font-size: 0.9rem; }
-        .snowflake:nth-child(9) { left: 85%; animation-duration: 8s; animation-delay: 4s; }
-        .snowflake:nth-child(10) { left: 95%; animation-duration: 12s; animation-delay: 1s; font-size: 1.1rem; }
+        .snowflake:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { left: 15%; animation-duration: 18s; animation-delay: 3s; font-size: 1rem; }
+        .snowflake:nth-child(3) { left: 25%; animation-duration: 12s; animation-delay: 6s; }
+        .snowflake:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 2s; font-size: 0.8rem; }
+        .snowflake:nth-child(5) { left: 45%; animation-duration: 14s; animation-delay: 5s; }
+        .snowflake:nth-child(6) { left: 55%; animation-duration: 16s; animation-delay: 8s; font-size: 1.2rem; }
+        .snowflake:nth-child(7) { left: 65%; animation-duration: 19s; animation-delay: 1s; }
+        .snowflake:nth-child(8) { left: 75%; animation-duration: 15s; animation-delay: 4s; font-size: 0.9rem; }
+        .snowflake:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 7s; }
+        .snowflake:nth-child(10) { left: 95%; animation-duration: 17s; animation-delay: 2s; font-size: 1.1rem; }
 
         @keyframes fall {
             0% { transform: translateY(-20px) rotate(0deg); }
@@ -217,7 +290,11 @@
 
         @media (max-width: 480px) {
             h1 { font-size: 1.7rem; }
-            .player-section { padding: 15px; }
+            .main-card { padding: 20px; }
+            .countdown-item { min-width: 70px; padding: 12px 15px; }
+            .countdown-number { font-size: 2rem; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .stat-number { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -238,42 +315,51 @@
     <div class="christmas-wrapper">
         <header>
             <h1>Palomaglade Christmas Lights Show</h1>
-            <p class="tagline">Tune in to sync with the lights!</p>
+            <p class="tagline">Tampa's Synchronized Light Experience</p>
         </header>
 
-        <div class="player-section">
-            <div class="player-instructions">
-                <p>Click the <strong>Play</strong> button to start the music!</p>
+        <div class="main-card">
+            <div class="season-badge">Season Complete</div>
+
+            <p class="thank-you">
+                Thank you for visiting us this holiday season!
+                We had an amazing time sharing the magic with our community.
+            </p>
+
+            <div class="countdown-container">
+                <p class="countdown-label">Next show starts in...</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">---</div>
+                        <div class="countdown-unit">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">--</div>
+                        <div class="countdown-unit">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="mins">--</div>
+                        <div class="countdown-unit">Mins</div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Snapweb player mounts here -->
-            <div id="root"></div>
         </div>
 
-        <div class="info-section">
-            <h2>How It Works</h2>
-            <ol>
-                <li>Press Play above</li>
-                <li>Turn up your volume</li>
-                <li>Enjoy the show!</li>
-            </ol>
-        </div>
-
-        <div class="show-times">
-            <h2>Show Times</h2>
-            <p>Sun - Thu: <strong>6:00 PM - 10:00 PM</strong></p>
-            <p>Fri - Sat: <strong>6:00 PM - 11:00 PM</strong></p>
-            <p>Through December 31st</p>
+        <div class="notify-section">
+            <a href="https://github.com/alprimak/palomaglade-lights-show" class="github-link" target="_blank">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                View on GitHub
+            </a>
         </div>
 
         <footer>
-            <p>Happy Holidays from the Palomaglade Community!</p>
+            <p>See you next Christmas!</p>
             <div class="made-in-tampa">
                 <span class="tampa-flag">
                     <svg viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg">
-                        <!-- White/grey American flag -->
                         <rect width="30" height="18" fill="#666"/>
-                        <!-- Stripes -->
                         <rect width="30" height="1.38" y="0" fill="#888"/>
                         <rect width="30" height="1.38" y="2.77" fill="#888"/>
                         <rect width="30" height="1.38" y="5.54" fill="#888"/>
@@ -281,9 +367,7 @@
                         <rect width="30" height="1.38" y="11.08" fill="#888"/>
                         <rect width="30" height="1.38" y="13.85" fill="#888"/>
                         <rect width="30" height="1.38" y="16.62" fill="#888"/>
-                        <!-- Canton -->
                         <rect width="12" height="9.69" fill="#555"/>
-                        <!-- Stars (simplified) -->
                         <circle cx="2" cy="1.6" r="0.5" fill="#ccc"/>
                         <circle cx="4" cy="1.6" r="0.5" fill="#ccc"/>
                         <circle cx="6" cy="1.6" r="0.5" fill="#ccc"/>
@@ -307,7 +391,6 @@
                         <circle cx="6" cy="8" r="0.5" fill="#ccc"/>
                         <circle cx="8" cy="8" r="0.5" fill="#ccc"/>
                         <circle cx="10" cy="8" r="0.5" fill="#ccc"/>
-                        <!-- Border -->
                         <rect width="30" height="18" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
                     </svg>
                 </span>
@@ -316,7 +399,26 @@
         </footer>
     </div>
 
-    <!-- Snapweb scripts -->
-    <script type="module" crossorigin src="/assets/index-BVS6L9wR.js"></script>
+    <script>
+        // Countdown to next Christmas season (November 24, 2025)
+        function updateCountdown() {
+            const nextSeason = new Date('2025-11-24T18:00:00');
+            const now = new Date();
+            const diff = nextSeason - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('mins').textContent = mins.toString().padStart(2, '0');
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // Update every minute
+    </script>
 </body>
 </html>
